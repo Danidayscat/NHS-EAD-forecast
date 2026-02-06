@@ -1,6 +1,6 @@
 # SPHERE-PPL Environmental Forecasting Contest - NHS Estimated Avoidable Deaths
 
-## Introduction[^readme-1]
+## Introduction
 
 This competition focuses on forecasting severe patient harm resulting from delays in admitting patients from the Emergency Department (ED). Delays occur when a patient has been deemed to require hospital admission but no beds are immediately available.
 
