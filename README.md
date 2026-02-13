@@ -1,4 +1,5 @@
-# SPHERE-PPL Environmental Forecasting Contest - NHS Estimated Avoidable Deaths
+# SPHERE-PPL Environmental Forecasting Contest - NHS System Pressure Forecasting
+
 
 ## Introduction
 
@@ -10,11 +11,26 @@ The aim of the competition is to develop an algorithm capable of predicting the 
 
 All data used in this project are drawn from real-world hospital records.
 
-## Forecasting Outputs
 
-For this contest, we are looking to forecast Estimated Number of Avoidable Deaths across 1 - 10 day horizons. Forecasts and reports should be saved into the submission folder, matching the template found within.
+## Data
 
-## Joining the contest & Getting Started
+### Development dataset
+
+The target outcome is daily estimated avoidable deaths, pre-calculated from ED admission delays and patient attributes across the Bristol NHS healthcare system, with no missing data.
+
+The 220 candidate explanatory variables vary in time frequency of recording, from every day to every 15 minutes. Some have records for every time-point within the 16 March 2023 to 30 September 2025 period whilst others have only partial recordings and missing data-points. 
+
+A glossary and data summary are provided in the Appendix.
+
+
+### Assessment dataset
+
+The assessment dataset will be of the same format to the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026. 
+
+
+## Contest Participation
+
+### Joining the contest & Getting Started
 
 In order to join the contest, you will need to fork or download the repo.
 
@@ -22,20 +38,40 @@ To fork the repo, simply press the "fork" button, which can be found at the top 
 
 To download the data without a github account, click the code box dropdown and download a zip of the data directly to your computer.
 
-![Fork or Download](https://github.com/SPHERE-PPL/forecasting-contest-template/blob/main/contest_media/fork_button.png)
 
+### Rules
 
-## Rules
-
--   Any coding languages are allowed but all analyses must be reproducible by the panel.
+-   The algorithm must be coded in either R or Python.
+-   The computational running time to produce one set of 10-day forecasts must be under one hour on a standard desktop computer.
 -   All entries must be loaded into a public Github repo.
 -   All entries must follow the submission formats outlined below.
 -   All entries must include a max 1000 word report to accompany the forecast analyses. This can be as a separate PDF/hmtl or incorporated into a quarto/jupyter notebook.
 -   Participants must submit their final algorithms by 5 April 2026. 
 -   The assessment dataset will be released on the 6 April 2026, upon which competitors must apply their submitted algorithms in generating forecasts over the assessment period from October 2025 to March 2026.
--   The final deadline for participants to submit their forecasts is 20 April 2026
+-   The final deadline for participants to submit their forecasts is 20 April 2026. Final submissions will be compared with those made prior to the release of the assessment dataset to verify that the algorithms have remained consistent.
 
-## How to Win!
+
+### How to Win!
+
+There are 182 days within the 1 October 2025 to 31 March 2026 range of the assessment dataset, meaning there are 173 sliding 10-day forecast periods (e.g., 1–10 Oct 2025 to 21–31 Mar 2026). 
+
+Competitors must use their submitted algorithm to generate forecasts for each day in all 173 periods. Forecast accuracy will be evaluated using Mean Squared Error (MSE) over the 1–5-day and 6–10-day horizons, as defined below:
+
+$$
+\text{MSE}_{1\text{–}5d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=1}^{5} (Y_{p,d} - \hat{Y}_{p,d})^2
+$$
+
+$$
+\text{MSE}_{6\text{–}10d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=6}^{10} (Y_{p,d} - \hat{Y}_{p,d})^2
+$$
+
+Here, \( Y_{p,d} \) is the observed value and \( \hat{Y}_{p,d} \) the forecast for day d within period p. For example, \( Y_{4,3} \) corresponds to 6 Oct 2025 (the third day of the fourth period), and note that \( Y_{4,3} = Y_{1,6} = Y_{2,5} = Y_{3,4} \).
+
+Forecasts for days \( D+1 \) to \( D+10 \) may use only data available up to midday on day D.  
+
+Because the target variable has a three-day reporting lag, any algorithms using past values of the target variable can only use data before three days past. Specifically, if today is day D (Saturday) then only data up to and including day D-3 (Wednesday) can be used. This relates only to the target outcome variable. 
+
+The algorithm may be recalibrated using new data from the assessment dataset when generating forecasts. While the submitted code cannot change, model structures or parameters may be dynamically updated based solely on the new data applied through the existing code.
 
 Awards will be given across two categories:
 
@@ -47,15 +83,25 @@ All winning teams will be assessed by the competition authors to ensure that the
 
 The winners will be selected by the SPHERE-PPL Team and will be invited to present their forecasts at the next Annual Meeting, with travel covered by the project.
 
-## How to Submit
 
-If you forked the repo, congratulations, you have almost entered the contest! Make sure to update your repo with your results! We will run the [Forecast AggregatoR](https://github.com/SPHERE-PPL/Forecast-AggregatoR) the day following the close of the contest and your repo will be collated with the entries.
+### How to Submit
+
+If you forked the repo, congratulations, you have almost entered the contest! Make sure to update your repo with your results! Forecasts and reports should be saved into the submission folder, matching the template found within. We will run the [Forecast AggregatoR](https://github.com/SPHERE-PPL/Forecast-AggregatoR) the day following the close of the contest and your repo will be collated with the entries.
 
 If you did not fork the repo, please send an email to [contest\@sphere-ppl.org](mailto:contest@sphere-ppl.org) with a link to your public github repo where your forecast and report are stored. These will then be collated with the other entries.
+
+Please raise any questions or matters of clarification on the aforementioned GitHub page as an ‘issue’. These will be answered and all competitors will be able to see the response.
+
+
+### Beyond the Contest
+
+The competition authors would be pleased to co-author an academic paper covering the implementation of the algorithm. This can include model development, or that may be covered in a separate paper that the winning team are welcome to independently author.
+
 
 ## Connect with the Community
 
 You can join our Zulip [here](https://sphereppl.zulipchat.com/join/olwtpi7g3wbyh5mxv4uwipaw/) and check out our events page to see the next online catch-up.
+
 
 ## License
 
