@@ -1,4 +1,4 @@
-# SPHERE-PPL Environmental Forecasting Contest - NHS System Pressure Forecasting
+# SPHERE-PPL Environmental Forecasting Contest - NHS Acute Harm Forecasting
 
 
 ## Introduction
