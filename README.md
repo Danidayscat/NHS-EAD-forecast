@@ -55,19 +55,31 @@ To download the data without a github account, click the code box dropdown and d
 
 There are 182 days within the 1 October 2025 to 31 March 2026 range of the assessment dataset, meaning there are 173 sliding 10-day forecast periods (e.g., 1–10 Oct 2025 to 21–31 Mar 2026). 
 
+# Competitors must use their submitted algorithm to generate forecasts for each day in all 173 periods. Forecast accuracy will be evaluated using Mean Squared Error (MSE) over the 1–5-day and 6–10-day horizons, as defined below:
+# 
+# $$
+# \text{MSE}_{1\text{–}5d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=1}^{5} (Y_{p,d} - \hat{Y}_{p,d})^2
+# $$
+# 
+# $$
+# \text{MSE}_{6\text{–}10d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=6}^{10} (Y_{p,d} - \hat{Y}_{p,d})^2
+# $$
+# 
+# Here, \( Y_{p,d} \) is the observed value and \( \hat{Y}_{p,d} \) the forecast for day d within period p. For example, \( Y_{4,3} \) corresponds to 6 Oct 2025 (the third day of the fourth period), and note that \( Y_{4,3} = Y_{1,6} = Y_{2,5} = Y_{3,4} \).
+# 
+# Forecasts for days \( D+1 \) to \( D+10 \) may use only data available up to midday on day D.  
+
 Competitors must use their submitted algorithm to generate forecasts for each day in all 173 periods. Forecast accuracy will be evaluated using Mean Squared Error (MSE) over the 1–5-day and 6–10-day horizons, as defined below:
 
-$$
-\text{MSE}_{1\text{–}5d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=1}^{5} (Y_{p,d} - \hat{Y}_{p,d})^2
-$$
+**MSE for days 1–5:**
+MSE₁–₅d = (1 / (173 × 5)) × Σₚ₌₁¹⁷³ Σ𝑑₌₁⁵ (Yₚ,𝑑 - Ŷₚ,𝑑)²
 
-$$
-\text{MSE}_{6\text{–}10d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=6}^{10} (Y_{p,d} - \hat{Y}_{p,d})^2
-$$
+**MSE for days 6–10:**
+MSE₆–₁₀d = (1 / (173 × 5)) × Σₚ₌₁¹⁷³ Σ𝑑₌₆¹⁰ (Yₚ,𝑑 - Ŷₚ,𝑑)²
 
-Here, \( Y_{p,d} \) is the observed value and \( \hat{Y}_{p,d} \) the forecast for day d within period p. For example, \( Y_{4,3} \) corresponds to 6 Oct 2025 (the third day of the fourth period), and note that \( Y_{4,3} = Y_{1,6} = Y_{2,5} = Y_{3,4} \).
+Here, Yₚ,𝑑 is the observed value and Ŷₚ,𝑑 is the forecast for day d within period p. For example, Y₄,₃ corresponds to 6 Oct 2025 (the third day of the fourth period), and note that Y₄,₃ = Y₁,₆ = Y₂,₅ = Y₃,₄.
 
-Forecasts for days \( D+1 \) to \( D+10 \) may use only data available up to midday on day D.  
+Forecasts for days D+1 to D+10 may use only data available up to midday on day D.
 
 Because the target variable has a three-day reporting lag, any algorithms using past values of the target variable can only use data before three days past. Specifically, if today is day D (Saturday) then only data up to and including day D-3 (Wednesday) can be used. This relates only to the target outcome variable. 
 
