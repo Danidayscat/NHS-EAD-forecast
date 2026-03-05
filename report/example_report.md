@@ -3,7 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-# NHS System Pressure Forecasting
+# NHS Severe Patient Harm Forecasting
 
 **Author:** Alex Rabeau  
 **Date:** February 2026
@@ -37,10 +37,17 @@ setwd("/Users/alexrabeau/Desktop/SPHERE/NHS-AD-forecasting")
 # Load dataset
 data <- read.csv("data/turingAI_forecasting_challenge_dataset.csv")
 
-# Convert timestamps
-data$dt <- as.POSIXct(data$dt, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC")
-data$date <- as.Date(data$dt)
-data$time <- format(data$dt, format = "%H:%M:%S")
+# date formatting
+data <- data %>%
+  mutate(
+    dt = parse_date_time(dt, orders = c("Ymd HMS", "Ymd")),
+    dt = force_tz(dt, tzone = "UTC"),
+    date = as.Date(dt),
+    time = format(dt, "%H:%M:%S")
+  )
+
+data <- data %>% 
+  filter(dt <= as.POSIXct("2025-09-30 00:00:00", tz = "UTC")) #filter out assessment dataset
 
 # Midday aggregation
 forecasting_df <- data %>%

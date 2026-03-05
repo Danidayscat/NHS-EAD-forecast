@@ -1,11 +1,11 @@
-# SPHERE-PPL Environmental Forecasting Contest - NHS System Pressure Forecasting
+# SPHERE-PPL Forecasting Contest - NHS Acute Patient Harm Forecasting
 
 
 ## Introduction
 
 This competition focuses on forecasting severe patient harm resulting from delays in admitting patients from the Emergency Department (ED). Delays occur when a patient has been deemed to require hospital admission but no beds are immediately available.
 
-Recent research in the Bristol NHS healthcare system has shown that every four hours of ED admission delay is associated with an 8% increase in the odds of 30-day mortality. Applied to recent data, this equates to an estimated 25 deaths per month that could be considered avoidable if there were no ED admission delays.
+Recent research in the Bristol NHS healthcare system has shown that every four hours of ED admission delay is associated with an 8% increase in the odds of 30-day mortality (Howlett et al., 2026). Applied to recent data, this equates to an estimated 25 deaths per month that could be considered avoidable if there were no ED admission delays.
 
 The aim of the competition is to develop an algorithm capable of predicting the number of avoidable deaths over the next ten days using near-real-time data. The winning model is intended for daily implementation in the Bristol NHS, providing managers with advance warning to enable pre-emptive action.
 
@@ -25,7 +25,7 @@ A glossary and data summary are provided in the Appendix.
 
 ### Assessment dataset
 
-The assessment dataset will be of the same format to the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026. 
+The assessment dataset will have the same format as the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026; in the current development dataset, this period is represented by dummy values (-9999).
 
 
 ## Contest Participation
@@ -46,9 +46,9 @@ To download the data without a github account, click the code box dropdown and d
 -   All entries must be loaded into a public Github repo.
 -   All entries must follow the submission formats outlined below.
 -   All entries must include a max 1000 word report to accompany the forecast analyses. This can be as a separate PDF/hmtl or incorporated into a quarto/jupyter notebook.
--   Participants must submit their final algorithms by 5 April 2026. 
--   The assessment dataset will be released on the 6 April 2026, upon which competitors must apply their submitted algorithms in generating forecasts over the assessment period from October 2025 to March 2026.
--   The final deadline for participants to submit their forecasts is 20 April 2026. Final submissions will be compared with those made prior to the release of the assessment dataset to verify that the algorithms have remained consistent.
+-   Participants must submit their final algorithms by 5 June 2026. 
+-   The assessment dataset will be released on the 6 June 2026, upon which competitors must apply their submitted algorithms in generating forecasts over the assessment period from October 2025 to March 2026.
+-   The final deadline for participants to submit their forecasts is 20 June 2026. Final submissions will be compared with those made prior to the release of the assessment dataset to verify that the algorithms have remained consistent.
 
 
 ### How to Win!
@@ -88,7 +88,7 @@ The winners will be selected by the SPHERE-PPL Team and will be invited to prese
 
 If you forked the repo, congratulations, you have almost entered the contest! Make sure to update your repo with your results! Forecasts and reports should be saved into the submission folder, matching the template found within. We will run the [Forecast AggregatoR](https://github.com/SPHERE-PPL/Forecast-AggregatoR) the day following the close of the contest and your repo will be collated with the entries.
 
-If you did not fork the repo, please send an email to [contest\@sphere-ppl.org](mailto:contest@sphere-ppl.org) with a link to your public github repo where your forecast and report are stored. These will then be collated with the other entries.
+If you did not fork the repo, please send an email to [info\@sphere-ppl.org](mailto:info@sphere-ppl.org) with a link to your public github repo where your forecast and report are stored. These will then be collated with the other entries.
 
 Please raise any questions or matters of clarification on the aforementioned GitHub page as an ‘issue’. These will be answered and all competitors will be able to see the response.
 

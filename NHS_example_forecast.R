@@ -13,9 +13,16 @@ setwd("/Users/alexrabeau/Desktop/SPHERE/NHS-AD-forecasting")
 data <- read.csv("data/turingAI_forecasting_challenge_dataset.csv") # outcome = 'estimated_avoidable_deaths NHS Bristol'
 
 # date formatting
-data$dt <- as.POSIXct(data$dt, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC")
-data$date <- as.Date(data$dt)                 # Extract the date part
-data$time <- format(data$dt, format = "%H:%M:%S")  # Extract the time part
+data <- data %>%
+  mutate(
+    dt = parse_date_time(dt, orders = c("Ymd HMS", "Ymd")),
+    dt = force_tz(dt, tzone = "UTC"),
+    date = as.Date(dt),
+    time = format(dt, "%H:%M:%S")
+  )
+
+data <- data %>% 
+  filter(dt <= as.POSIXct("2025-09-30 00:00:00", tz = "UTC")) #filter out assessment dataset
 
 # data cleaning
 forecasting_df <- data %>%
