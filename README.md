@@ -1,11 +1,11 @@
-# SPHERE-PPL Environmental Forecasting Contest - NHS Acute Harm Forecasting
+# SPHERE-PPL Forecasting Contest - NHS Acute Patient Harm Forecasting
 
 
 ## Introduction
 
 This competition focuses on forecasting severe patient harm resulting from delays in admitting patients from the Emergency Department (ED). Delays occur when a patient has been deemed to require hospital admission but no beds are immediately available.
 
-Recent research in the Bristol NHS healthcare system has shown that every four hours of ED admission delay is associated with an 8% increase in the odds of 30-day mortality. Applied to recent data, this equates to an estimated 25 deaths per month that could be considered avoidable if there were no ED admission delays.
+Recent research in the Bristol NHS healthcare system has shown that every four hours of ED admission delay is associated with an 8% increase in the odds of 30-day mortality (Howlett et al., 2026). Applied to recent data, this equates to an estimated 25 deaths per month that could be considered avoidable if there were no ED admission delays.
 
 The aim of the competition is to develop an algorithm capable of predicting the number of avoidable deaths over the next ten days using near-real-time data. The winning model is intended for daily implementation in the Bristol NHS, providing managers with advance warning to enable pre-emptive action.
 
@@ -25,7 +25,7 @@ A glossary and data summary are provided in the Appendix.
 
 ### Assessment dataset
 
-The assessment dataset will be of the same format to the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026. 
+The assessment dataset will have the same format as the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026; in the current development dataset, this period is represented by dummy values (-9999).
 
 
 ## Contest Participation
@@ -46,9 +46,9 @@ To download the data without a github account, click the code box dropdown and d
 -   All entries must be loaded into a public Github repo.
 -   All entries must follow the submission formats outlined below.
 -   All entries must include a max 1000 word report to accompany the forecast analyses. This can be as a separate PDF/hmtl or incorporated into a quarto/jupyter notebook.
--   Participants must submit their final algorithms by 5 April 2026. 
--   The assessment dataset will be released on the 6 April 2026, upon which competitors must apply their submitted algorithms in generating forecasts over the assessment period from October 2025 to March 2026.
--   The final deadline for participants to submit their forecasts is 20 April 2026. Final submissions will be compared with those made prior to the release of the assessment dataset to verify that the algorithms have remained consistent.
+-   Participants must submit their final algorithms by 5 June 2026. 
+-   The assessment dataset will be released on the 6 June 2026, upon which competitors must apply their submitted algorithms in generating forecasts over the assessment period from October 2025 to March 2026.
+-   The final deadline for participants to submit their forecasts is 20 June 2026. Final submissions will be compared with those made prior to the release of the assessment dataset to verify that the algorithms have remained consistent.
 
 
 ### How to Win!
@@ -57,17 +57,15 @@ There are 182 days within the 1 October 2025 to 31 March 2026 range of the asses
 
 Competitors must use their submitted algorithm to generate forecasts for each day in all 173 periods. Forecast accuracy will be evaluated using Mean Squared Error (MSE) over the 1–5-day and 6–10-day horizons, as defined below:
 
-$$
-\text{MSE}_{1\text{–}5d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=1}^{5} (Y_{p,d} - \hat{Y}_{p,d})^2
-$$
+**MSE for days 1–5:**
+MSE₁–₅d = (1 / (173 × 5)) × Σₚ₌₁¹⁷³ Σ𝑑₌₁⁵ (Yₚ,𝑑 - Ŷₚ,𝑑)²
 
-$$
-\text{MSE}_{6\text{–}10d} = \frac{1}{173 \times 5} \sum_{p=1}^{173} \sum_{d=6}^{10} (Y_{p,d} - \hat{Y}_{p,d})^2
-$$
+**MSE for days 6–10:**
+MSE₆–₁₀d = (1 / (173 × 5)) × Σₚ₌₁¹⁷³ Σ𝑑₌₆¹⁰ (Yₚ,𝑑 - Ŷₚ,𝑑)²
 
-Here, \( Y_{p,d} \) is the observed value and \( \hat{Y}_{p,d} \) the forecast for day d within period p. For example, \( Y_{4,3} \) corresponds to 6 Oct 2025 (the third day of the fourth period), and note that \( Y_{4,3} = Y_{1,6} = Y_{2,5} = Y_{3,4} \).
+Here, Yₚ,𝑑 is the observed value and Ŷₚ,𝑑 is the forecast for day d within period p. For example, Y₄,₃ corresponds to 6 Oct 2025 (the third day of the fourth period), and note that Y₄,₃ = Y₁,₆ = Y₂,₅ = Y₃,₄.
 
-Forecasts for days \( D+1 \) to \( D+10 \) may use only data available up to midday on day D.  
+Forecasts for days D+1 to D+10 may use only data available up to midday on day D.
 
 Because the target variable has a three-day reporting lag, any algorithms using past values of the target variable can only use data before three days past. Specifically, if today is day D (Saturday) then only data up to and including day D-3 (Wednesday) can be used. This relates only to the target outcome variable. 
 
@@ -88,7 +86,7 @@ The winners will be selected by the SPHERE-PPL Team and will be invited to prese
 
 If you forked the repo, congratulations, you have almost entered the contest! Make sure to update your repo with your results! Forecasts and reports should be saved into the submission folder, matching the template found within. We will run the [Forecast AggregatoR](https://github.com/SPHERE-PPL/Forecast-AggregatoR) the day following the close of the contest and your repo will be collated with the entries.
 
-If you did not fork the repo, please send an email to [contest\@sphere-ppl.org](mailto:contest@sphere-ppl.org) with a link to your public github repo where your forecast and report are stored. These will then be collated with the other entries.
+If you did not fork the repo, please send an email to [info\@sphere-ppl.org](mailto:info@sphere-ppl.org) with a link to your public github repo where your forecast and report are stored. These will then be collated with the other entries.
 
 Please raise any questions or matters of clarification on the aforementioned GitHub page as an ‘issue’. These will be answered and all competitors will be able to see the response.
 
