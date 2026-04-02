@@ -27,6 +27,8 @@ A glossary and data summary are provided in the Appendix.
 
 The assessment dataset will have the same format as the development dataset, containing the target variable and 220 candidate explanatory variables over the period from 1 October 2025 to 31 March 2026; in the current development dataset, this period is represented by dummy values (-9999).
 
+Note: You must have Git Large File Storage (Git LFS) installed in order to access the dataset.
+
 
 ## Contest Participation
 
