@@ -1,0 +1,349 @@
+metric_name,coverage_label,source,frequency,freq_label,metric_label
+Patients in A&E,BRI,frontier,15,Every 15 minutes,Patients in A&E - BRI
+4hr Breach Performance,BRI,frontier,15,Every 15 minutes,4hr Breach Performance - BRI
+Total Breaches Since Midnight,BRI,frontier,15,Every 15 minutes,Total Breaches Since Midnight - BRI
+No. of DTAs,BRI,frontier,15,Every 15 minutes,No. of DTAs - BRI
+Average Time to Triage,BRI,frontier,15,Every 15 minutes,Average Time to Triage - BRI
+Average Time to Assessment,BRI,frontier,15,Every 15 minutes,Average Time to Assessment - BRI
+New Arrivals in Last Hour,BRI,frontier,15,Every 15 minutes,New Arrivals in Last Hour - BRI
+Resuscitation Capacity,BRI,frontier,15,Every 15 minutes,Resuscitation Capacity - BRI
+A&E Discharges in Last Hour,BRI,frontier,15,Every 15 minutes,A&E Discharges in Last Hour - BRI
+Patients in A&E,BRI (Children's),frontier,15,Every 15 minutes,Patients in A&E - BRI (Children's)
+4hr Breach Performance,BRI (Children's),frontier,15,Every 15 minutes,4hr Breach Performance - BRI (Children's)
+Total Breaches Since Midnight,BRI (Children's),frontier,15,Every 15 minutes,Total Breaches Since Midnight - BRI (Children's)
+No. of DTAs,BRI (Children's),frontier,15,Every 15 minutes,No. of DTAs - BRI (Children's)
+Average Time to Triage,BRI (Children's),frontier,15,Every 15 minutes,Average Time to Triage - BRI (Children's)
+Average Time to Assessment,BRI (Children's),frontier,15,Every 15 minutes,Average Time to Assessment - BRI (Children's)
+Minors patient count,BRI (Children's),frontier,15,Every 15 minutes,Minors patient count - BRI (Children's)
+New Arrivals in Last Hour,BRI (Children's),frontier,15,Every 15 minutes,New Arrivals in Last Hour - BRI (Children's)
+Resuscitation Capacity,BRI (Children's),frontier,15,Every 15 minutes,Resuscitation Capacity - BRI (Children's)
+A&E Discharges in Last Hour,BRI (Children's),frontier,15,Every 15 minutes,A&E Discharges in Last Hour - BRI (Children's)
+Patients in A&E,WGH,frontier,15,Every 15 minutes,Patients in A&E - WGH
+4hr Breach Performance,WGH,frontier,15,Every 15 minutes,4hr Breach Performance - WGH
+No. of DTAs,WGH,frontier,15,Every 15 minutes,No. of DTAs - WGH
+Average Time to Triage,WGH,frontier,15,Every 15 minutes,Average Time to Triage - WGH
+Average Time to Assessment,WGH,frontier,15,Every 15 minutes,Average Time to Assessment - WGH
+New Arrivals in Last Hour,WGH,frontier,15,Every 15 minutes,New Arrivals in Last Hour - WGH
+Resuscitation Capacity,WGH,frontier,15,Every 15 minutes,Resuscitation Capacity - WGH
+A&E Discharges in Last Hour,WGH,frontier,15,Every 15 minutes,A&E Discharges in Last Hour - WGH
+Total Breaches Since Midnight,WGH,frontier,15,Every 15 minutes,Total Breaches Since Midnight - WGH
+Cohorting & Reverse Queue,BRI,frontier,15,Every 15 minutes,Cohorting & Reverse Queue - BRI
+Patients in A&E,NBT,frontier,15,Every 15 minutes,Patients in A&E - NBT
+4hr Breach Performance,NBT,frontier,15,Every 15 minutes,4hr Breach Performance - NBT
+Total Breaches Since Midnight,NBT,frontier,15,Every 15 minutes,Total Breaches Since Midnight - NBT
+No. of DTAs,NBT,frontier,15,Every 15 minutes,No. of DTAs - NBT
+No. of DTAs (> 8hrs),NBT,frontier,15,Every 15 minutes,No. of DTAs (> 8hrs) - NBT
+Average Time to Triage,NBT,frontier,15,Every 15 minutes,Average Time to Triage - NBT
+Average Time to Assessment,NBT,frontier,15,Every 15 minutes,Average Time to Assessment - NBT
+Majors patient count,NBT,frontier,15,Every 15 minutes,Majors patient count - NBT
+Minors patient count,NBT,frontier,15,Every 15 minutes,Minors patient count - NBT
+New Arrivals in Last Hour,NBT,frontier,15,Every 15 minutes,New Arrivals in Last Hour - NBT
+Resuscitation Capacity,NBT,frontier,15,Every 15 minutes,Resuscitation Capacity - NBT
+A&E Discharges in Last Hour,NBT,frontier,15,Every 15 minutes,A&E Discharges in Last Hour - NBT
+Ambulance Queue,NBT,frontier,15,Every 15 minutes,Ambulance Queue - NBT
+Cohorting & Reverse Queue,NBT,frontier,15,Every 15 minutes,Cohorting & Reverse Queue - NBT
+No. of DTAs (> 8hrs),WGH,frontier,15,Every 15 minutes,No. of DTAs (> 8hrs) - WGH
+Majors patient count,BRI (Children's),frontier,15,Every 15 minutes,Majors patient count - BRI (Children's)
+DtA Community P2 Bed Occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA Community P2 Bed Occupied - Sirona
+"DtA P1 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and NOT in an acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and NOT in an acute - Sirona"
+"DtA P1 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+"DtA P1 BOOKED Waiting for capacity, medically fit and NOT in an acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 BOOKED Waiting for capacity, medically fit and NOT in an acute - Sirona"
+"DtA P1 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+DtA P1 Referrals Received,Sirona,uec_daily,1440,Every day at 11h00,DtA P1 Referrals Received - Sirona
+DtA P1 slots booked,Sirona,uec_daily,1440,Every day at 11h00,DtA P1 slots booked - Sirona
+DtA P2 Beds Occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA P2 Beds Occupied - Sirona
+"DtA P2 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P2 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+DtA P2 Referrals Received,Sirona,uec_daily,1440,Every day at 11h00,DtA P2 Referrals Received - Sirona
+"DtA P3 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P3 BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+"DtA P3 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P3 BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+DtA SBRU P2 rehabilitation beds occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA SBRU P2 rehabilitation beds occupied - Sirona
+DtA SBRU P2 stroke beds occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA SBRU P2 stroke beds occupied - Sirona
+No of referrals received for DtA P3,Sirona,uec_daily,1440,Every day at 11h00,No of referrals received for DtA P3 - Sirona
+Patients Admitted to DtA P2 - YESTERDAY'S DATA,Sirona,uec_daily,1440,Every day at 11h00,Patients Admitted to DtA P2 - YESTERDAY'S DATA - Sirona
+Patients Admitted to DtA P3 - YESTERDAY'S DATA,Sirona,uec_daily,1440,Every day at 11h00,Patients Admitted to DtA P3 - YESTERDAY'S DATA - Sirona
+DtA P2 referrals received,Sirona,uec_daily,1440,Every day at 11h00,DtA P2 referrals received - Sirona
+"DtA P2 TOTAL BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE",Sirona,uec_daily,1440,Every day at 11h00,"DtA P2 TOTAL BOOKED AND UN-BOOKED Waiting for capacity, medically fit and ready to leave ACUTE - Sirona"
+Sirona BNSSG % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona BNSSG % Staffing Reduction - Sirona
+Sirona ICE Bristol Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona ICE Bristol Locality % Staffing Reduction - Sirona
+Sirona N&W Bristol Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona N&W Bristol Locality % Staffing Reduction - Sirona
+Sirona SASS % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona SASS % Staffing Reduction - Sirona
+Sirona South Bristol Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona South Bristol Locality % Staffing Reduction - Sirona
+Sirona South Glos Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona South Glos Locality % Staffing Reduction - Sirona
+Sirona Weston & Worle Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona Weston & Worle Locality % Staffing Reduction - Sirona
+Sirona Woodspring Locality % Staffing Reduction,Sirona,uec_daily,1440,Every day at 11h00,Sirona Woodspring Locality % Staffing Reduction - Sirona
+Closed TOC Docs to all pathways,Sirona,uec_daily,1440,Every day at 11h00,Closed TOC Docs to all pathways - Sirona
+DtA P3 beds occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA P3 beds occupied - Sirona
+"DtA P1 TOTAL (BOOKED AND UNBOOKED) Waiting for capacity and medically fit, and in any setting (acute and non-acute)",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 TOTAL (BOOKED AND UNBOOKED) Waiting for capacity and medically fit, and in any setting (acute and non-acute) - Sirona"
+"DtA P1 UNBOOKED Waiting for capacity, medically fit and NOT in an acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 UNBOOKED Waiting for capacity, medically fit and NOT in an acute - Sirona"
+DtA P3 TOTAL (BOOKED AND UNBOOKED) Waiting for capacity and medically fit and in any setting (acute and transitional bed),Sirona,uec_daily,1440,Every day at 11h00,DtA P3 TOTAL (BOOKED AND UNBOOKED) Waiting for capacity and medically fit and in any setting (acute and transitional bed) - Sirona
+"DtA P3 UNBOOKED Waiting for capacity, medically fit and ready to leave acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P3 UNBOOKED Waiting for capacity, medically fit and ready to leave acute - Sirona"
+"DtA P1 UNBOOKED Waiting for capacity, medically fit and ready to leave acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P1 UNBOOKED Waiting for capacity, medically fit and ready to leave acute - Sirona"
+"DtA P2 UNBOOKED Waiting for capacity, medically fit and ready to leave acute",Sirona,uec_daily,1440,Every day at 11h00,"DtA P2 UNBOOKED Waiting for capacity, medically fit and ready to leave acute - Sirona"
+(Severnside) HCP Calls Answered,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) HCP Calls Answered - SevernSide
+Number of critical care beds available at 8am (today),BRI,uec_daily,1440,Every day at 11h00,Number of critical care beds available at 8am (today) - BRI
+Number of empty beds on assessment units 8am (today),BRI,uec_daily,1440,Every day at 11h00,Number of empty beds on assessment units 8am (today) - BRI
+Number of GP expected diverts to ED,BRI,uec_daily,1440,Every day at 11h00,Number of GP expected diverts to ED - BRI
+Number of Medical Outliers,BRI,uec_daily,1440,Every day at 11h00,Number of Medical Outliers - BRI
+Number of empty beds on assessment units 8am (today) - Medicine,BRI,uec_daily,1440,Every day at 11h00,Number of empty beds on assessment units 8am (today) - Medicine - BRI
+Number of empty beds on assessment units 8am (today) - Surgery,BRI,uec_daily,1440,Every day at 11h00,Number of empty beds on assessment units 8am (today) - Surgery - BRI
+Deficit of Discharges at 1100 - With Definite Discharges Known,BRI,uec_daily,1440,Every day at 11h00,Deficit of Discharges at 1100 - With Definite Discharges Known - BRI
+Deficit of Discharges at 1100 - With Definite and Potential Discharges Identified,BRI,uec_daily,1440,Every day at 11h00,Deficit of Discharges at 1100 - With Definite and Potential Discharges Identified - BRI
+Number of Surgical Outliers,BRI,uec_daily,1440,Every day at 11h00,Number of Surgical Outliers - BRI
+Number of Cardiac Outliers,BRI,uec_daily,1440,Every day at 11h00,Number of Cardiac Outliers - BRI
+Resuscitation Capacity at 1000,BRI,uec_daily,1440,Every day at 11h00,Resuscitation Capacity at 1000 - BRI
+Number of Outliers (excluding paediatrics) at 1000,BRI,uec_daily,1440,Every day at 11h00,Number of Outliers (excluding paediatrics) at 1000 - BRI
+(SWASFT) Number of HCP Incidents,SWASFT,uec_daily,1440,Every day at 11h00,(SWASFT) Number of HCP Incidents - SWASFT
+(SWASFT) Number of NHS 111 Incidents,SWASFT,uec_daily,1440,Every day at 11h00,(SWASFT) Number of NHS 111 Incidents - SWASFT
+(Severnside) Calls Received,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Calls Received - SevernSide
+(Severnside) Calls Answered,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Calls Answered - SevernSide
+(Severnside) Calls Answered Within 60 Seconds,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Calls Answered Within 60 Seconds - SevernSide
+(Severnside) Calls Triaged,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Calls Triaged - SevernSide
+(Severnside) Referred to 999 - C1 Ambulances,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Referred to 999 - C1 Ambulances - SevernSide
+(Severnside) Referred to 999 - C2 Ambulances,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Referred to 999 - C2 Ambulances - SevernSide
+(Severnside) Referred to 999 - C3 Ambulances,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Referred to 999 - C3 Ambulances - SevernSide
+(Severnside) Referred to 999 - C4 Ambulances,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Referred to 999 - C4 Ambulances - SevernSide
+(Severnside) Referred to ED,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) Referred to ED - SevernSide
+Number of Discharges,WGH,uec_daily,1440,Every day at 11h00,Number of Discharges - WGH
+Number of Admissions,WGH,uec_daily,1440,Every day at 11h00,Number of Admissions - WGH
+Escalation beds open,WGH,uec_daily,1440,Every day at 11h00,Escalation beds open - WGH
+G&A Bed occupancy,WGH,uec_daily,1440,Every day at 11h00,G&A Bed occupancy - WGH
+Critical Care beds - Adult critical care beds occupied,WGH,uec_daily,1440,Every day at 11h00,Critical Care beds - Adult critical care beds occupied - WGH
+A&E attends - paediatrics,NBT,uec_daily,1440,Every day at 11h00,A&E attends - paediatrics - NBT
+Number of Admissions,NBT,uec_daily,1440,Every day at 11h00,Number of Admissions - NBT
+Number of Discharges,NBT,uec_daily,1440,Every day at 11h00,Number of Discharges - NBT
+"G&A beds, core stock open",NBT,uec_daily,1440,Every day at 11h00,"G&A beds, core stock open - NBT"
+Escalation beds open,NBT,uec_daily,1440,Every day at 11h00,Escalation beds open - NBT
+G&A Bed occupancy,NBT,uec_daily,1440,Every day at 11h00,G&A Bed occupancy - NBT
+Beds occupied by long-stay patients (21+ days),NBT,uec_daily,1440,Every day at 11h00,Beds occupied by long-stay patients (21+ days) - NBT
+Adult critical care beds occupied,NBT,uec_daily,1440,Every day at 11h00,Adult critical care beds occupied - NBT
+A&E attends - paediatrics,BRI,uec_daily,1440,Every day at 11h00,A&E attends - paediatrics - BRI
+Number of Admissions,BRI,uec_daily,1440,Every day at 11h00,Number of Admissions - BRI
+Number of Discharges,BRI,uec_daily,1440,Every day at 11h00,Number of Discharges - BRI
+Escalation beds open,BRI,uec_daily,1440,Every day at 11h00,Escalation beds open - BRI
+G&A Bed occupancy,BRI,uec_daily,1440,Every day at 11h00,G&A Bed occupancy - BRI
+Beds occupied by long-stay patients (21+ days),BRI,uec_daily,1440,Every day at 11h00,Beds occupied by long-stay patients (21+ days) - BRI
+Critical Care beds - Adult critical care beds occupied,BRI,uec_daily,1440,Every day at 11h00,Critical Care beds - Adult critical care beds occupied - BRI
+Critical Care beds - Paediatric intensive care beds occupied,BRI,uec_daily,1440,Every day at 11h00,Critical Care beds - Paediatric intensive care beds occupied - BRI
+Critical Care beds - Neonatal intensive care cots occupied,BRI,uec_daily,1440,Every day at 11h00,Critical Care beds - Neonatal intensive care cots occupied - BRI
+"Of neonatal critical care beds occupied, how many are level 3?",NBT,uec_daily,1440,Every day at 11h00,"Of neonatal critical care beds occupied, how many are level 3? - NBT"
+Ambulance Queue,BRI,frontier,15,Every 15 minutes,Ambulance Queue - BRI
+No. of DTAs (> 8hrs),BRI,frontier,15,Every 15 minutes,No. of DTAs (> 8hrs) - BRI
+No. of DTAs (> 8hrs),BRI (Children's),frontier,15,Every 15 minutes,No. of DTAs (> 8hrs) - BRI (Children's)
+Cohorting & Reverse Queue,WGH,frontier,15,Every 15 minutes,Cohorting & Reverse Queue - WGH
+Ambulance Handovers 15mins (Last Hour),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Last Hour) - BRI
+Ambulance Handovers 30 mins (Last Hour),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 30 mins (Last Hour) - BRI
+Ambulance Handovers 60 mins (Last Hour),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 60 mins (Last Hour) - BRI
+Ambulance Handovers 15mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Since Midnight) - BRI
+Ambulance Handovers 30mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 30mins (Since Midnight) - BRI
+Ambulance Handovers 60mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Ambulance Handovers 60mins (Since Midnight) - BRI
+Handover to Clear 15mins (Last Hour),BRI,frontier,15,Every 15 minutes,Handover to Clear 15mins (Last Hour) - BRI
+Handover to Clear 30mins (Last Hour),BRI,frontier,15,Every 15 minutes,Handover to Clear 30mins (Last Hour) - BRI
+Handover to Clear 15mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Handover to Clear 15mins (Since Midnight) - BRI
+Handover to Clear 30mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Handover to Clear 30mins (Since Midnight) - BRI
+Handover to Clear 60mins (Since Midnight),BRI,frontier,15,Every 15 minutes,Handover to Clear 60mins (Since Midnight) - BRI
+Ambulances Conveyed to Hospital (Last Hour),BRI,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Last Hour) - BRI
+Ambulances Conveyed to Hospital (Since Midnight),BRI,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Since Midnight) - BRI
+Handover Time Lost Since Midnight (hh:mm),BRI,frontier,15,Every 15 minutes,Handover Time Lost Since Midnight (hh:mm) - BRI
+Ambulances En Route to Hospital,BRI,frontier,15,Every 15 minutes,Ambulances En Route to Hospital - BRI
+Ambulance Handovers 15mins (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Last Hour) - BRI (Children's)
+Ambulance Handovers 30 mins (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 30 mins (Last Hour) - BRI (Children's)
+Ambulance Handovers 60 mins (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 60 mins (Last Hour) - BRI (Children's)
+Ambulance Handovers 15mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Since Midnight) - BRI (Children's)
+Ambulance Handovers 30mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 30mins (Since Midnight) - BRI (Children's)
+Ambulance Handovers 60mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Ambulance Handovers 60mins (Since Midnight) - BRI (Children's)
+Handover to Clear 15mins (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Handover to Clear 15mins (Last Hour) - BRI (Children's)
+Handover to Clear 30mins (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Handover to Clear 30mins (Last Hour) - BRI (Children's)
+Handover to Clear 15mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Handover to Clear 15mins (Since Midnight) - BRI (Children's)
+Handover to Clear 30mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Handover to Clear 30mins (Since Midnight) - BRI (Children's)
+Handover to Clear 60mins (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Handover to Clear 60mins (Since Midnight) - BRI (Children's)
+Ambulances Conveyed to Hospital (Last Hour),BRI (Children's),frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Last Hour) - BRI (Children's)
+Ambulances Conveyed to Hospital (Since Midnight),BRI (Children's),frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Since Midnight) - BRI (Children's)
+Handover Time Lost Since Midnight (hh:mm),BRI (Children's),frontier,15,Every 15 minutes,Handover Time Lost Since Midnight (hh:mm) - BRI (Children's)
+Ambulances En Route to Hospital,BRI (Children's),frontier,15,Every 15 minutes,Ambulances En Route to Hospital - BRI (Children's)
+Ambulance Handovers 15mins (Last Hour),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Last Hour) - WGH
+Ambulance Handovers 30 mins (Last Hour),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 30 mins (Last Hour) - WGH
+Ambulance Handovers 60 mins (Last Hour),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 60 mins (Last Hour) - WGH
+Ambulance Handovers 15mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Since Midnight) - WGH
+Ambulance Handovers 30mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 30mins (Since Midnight) - WGH
+Ambulance Handovers 60mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Ambulance Handovers 60mins (Since Midnight) - WGH
+Handover to Clear 15mins (Last Hour),WGH,frontier,15,Every 15 minutes,Handover to Clear 15mins (Last Hour) - WGH
+Handover to Clear 30mins (Last Hour),WGH,frontier,15,Every 15 minutes,Handover to Clear 30mins (Last Hour) - WGH
+Handover to Clear 15mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Handover to Clear 15mins (Since Midnight) - WGH
+Handover to Clear 30mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Handover to Clear 30mins (Since Midnight) - WGH
+Handover to Clear 60mins (Since Midnight),WGH,frontier,15,Every 15 minutes,Handover to Clear 60mins (Since Midnight) - WGH
+Ambulances Conveyed to Hospital (Last Hour),WGH,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Last Hour) - WGH
+Ambulances Conveyed to Hospital (Since Midnight),WGH,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Since Midnight) - WGH
+Handover Time Lost Since Midnight (hh:mm),WGH,frontier,15,Every 15 minutes,Handover Time Lost Since Midnight (hh:mm) - WGH
+Ambulances En Route to Hospital,WGH,frontier,15,Every 15 minutes,Ambulances En Route to Hospital - WGH
+Ambulances En Route to Hospital,BNSSG,frontier,15,Every 15 minutes,Ambulances En Route to Hospital - BNSSG
+Number of Active Calls on the 999 Call Stack,BNSSG,frontier,15,Every 15 minutes,Number of Active Calls on the 999 Call Stack - BNSSG
+Number of Waiting Calls on the 999 Call Stack,BNSSG,frontier,15,Every 15 minutes,Number of Waiting Calls on the 999 Call Stack - BNSSG
+Proportion of Calls Since Midnight that Received a See Convey,BNSSG,frontier,15,Every 15 minutes,Proportion of Calls Since Midnight that Received a See Convey - BNSSG
+Proportion of Calls Since Midnight that Received a See Treat,BNSSG,frontier,15,Every 15 minutes,Proportion of Calls Since Midnight that Received a See Treat - BNSSG
+Proportion of Calls Since Midnight that Received a Hear Treat,BNSSG,frontier,15,Every 15 minutes,Proportion of Calls Since Midnight that Received a Hear Treat - BNSSG
+Category 1 - BNSSG Mean Response (Since Midnight),BNSSG,frontier,15,Every 15 minutes,Category 1 - BNSSG Mean Response (Since Midnight) - BNSSG
+Category 2 - BNSSG Mean Response (Since Midnight),BNSSG,frontier,15,Every 15 minutes,Category 2 - BNSSG Mean Response (Since Midnight) - BNSSG
+Category 3 - BNSSG Mean Response (Since Midnight),BNSSG,frontier,15,Every 15 minutes,Category 3 - BNSSG Mean Response (Since Midnight) - BNSSG
+Category 1 - BNSSG 90th Response (Last Hour),BNSSG,frontier,15,Every 15 minutes,Category 1 - BNSSG 90th Response (Last Hour) - BNSSG
+Category 2 - BNSSG 90th Response (Last Hour),BNSSG,frontier,15,Every 15 minutes,Category 2 - BNSSG 90th Response (Last Hour) - BNSSG
+Category 3 - BNSSG 90th Response (Last Hour),BNSSG,frontier,15,Every 15 minutes,Category 3 - BNSSG 90th Response (Last Hour) - BNSSG
+Ambulance Handovers 15mins (Last Hour),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Last Hour) - NBT
+Ambulance Handovers 30 mins (Last Hour),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 30 mins (Last Hour) - NBT
+Ambulance Handovers 60 mins (Last Hour),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 60 mins (Last Hour) - NBT
+Ambulance Handovers 15mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 15mins (Since Midnight) - NBT
+Ambulance Handovers 30mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 30mins (Since Midnight) - NBT
+Ambulance Handovers 60mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Ambulance Handovers 60mins (Since Midnight) - NBT
+Handover to Clear 15mins (Last Hour),NBT,frontier,15,Every 15 minutes,Handover to Clear 15mins (Last Hour) - NBT
+Handover to Clear 30mins (Last Hour),NBT,frontier,15,Every 15 minutes,Handover to Clear 30mins (Last Hour) - NBT
+Handover to Clear 15mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Handover to Clear 15mins (Since Midnight) - NBT
+Handover to Clear 30mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Handover to Clear 30mins (Since Midnight) - NBT
+Handover to Clear 60mins (Since Midnight),NBT,frontier,15,Every 15 minutes,Handover to Clear 60mins (Since Midnight) - NBT
+Ambulances Conveyed to Hospital (Last Hour),NBT,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Last Hour) - NBT
+Ambulances Conveyed to Hospital (Since Midnight),NBT,frontier,15,Every 15 minutes,Ambulances Conveyed to Hospital (Since Midnight) - NBT
+Handover Time Lost Since Midnight (hh:mm),NBT,frontier,15,Every 15 minutes,Handover Time Lost Since Midnight (hh:mm) - NBT
+Ambulances En Route to Hospital,NBT,frontier,15,Every 15 minutes,Ambulances En Route to Hospital - NBT
+OPEL,BNSSG,frontier,1440,Every day at 9h00,OPEL - BNSSG
+Ambulances En Route to Hospitals,BNSSG,frontier,15,Every 15 minutes,Ambulances En Route to Hospitals - BNSSG
+Ambulances En Route to Hospitals,BRI (Children's),frontier,15,Every 15 minutes,Ambulances En Route to Hospitals - BRI (Children's)
+OPEL,Bristol City Council,frontier,1440,Every day at 9h00,OPEL - Bristol City Council
+OPEL,BRI,frontier,1440,Every day at 5h00,OPEL - BRI
+OPEL,WGH,frontier,1440,Every day at 5h00,OPEL - WGH
+OPEL,NBT,frontier,1440,Every day at 5h00,OPEL - NBT
+OPEL,SevernSide,frontier,1440,Every day at 8h00,OPEL - SevernSide
+OPEL,BNSSG Adult Health Community Services,frontier,1440,Every day at 8h00,OPEL - BNSSG Adult Health Community Services
+Category 4 - BNSSG Mean Response (Since Midnight),BNSSG,frontier,15,Every 15 minutes,Category 4 - BNSSG Mean Response (Since Midnight) - BNSSG
+Category 4 - BNSSG 90th Response (Last Hour),BNSSG,frontier,15,Every 15 minutes,Category 4 - BNSSG 90th Response (Last Hour) - BNSSG
+OPEL,South Gloucestershire Council,frontier,1440,Every day at 9h00,OPEL - South Gloucestershire Council
+OPEL,North Somerset Council,frontier,10080,Not fixed,OPEL - North Somerset Council
+OPEL,BRI (Children's),frontier,1455,Not fixed,OPEL - BRI (Children's)
+OPEL,AWP,frontier,1440,Every day at 9h00,OPEL - AWP
+Ambulances En Route to Hospitals,BRI,frontier,15,Every 15 minutes,Ambulances En Route to Hospitals - BRI
+Ambulances En Route to Hospitals,WGH,frontier,15,Every 15 minutes,Ambulances En Route to Hospitals - WGH
+Ambulances En Route to Hospitals,NBT,frontier,15,Every 15 minutes,Ambulances En Route to Hospitals - NBT
+Number of Cases on IUC CAS Queue,SevernSide,frontier,300,Every 5 hours,Number of Cases on IUC CAS Queue - SevernSide
+Number of Home Visits,SevernSide,frontier,300,Every 5 hours,Number of Home Visits - SevernSide
+Number of Treatment Centre Appointments,SevernSide,frontier,300,Every 5 hours,Number of Treatment Centre Appointments - SevernSide
+IUC Advice Longest Wait (HCP Call Back),SevernSide,frontier,300,Every 5 hours,IUC Advice Longest Wait (HCP Call Back) - SevernSide
+IUC Advice Longest Wait (1hr Call Back),SevernSide,frontier,300,Every 5 hours,IUC Advice Longest Wait (1hr Call Back) - SevernSide
+IUC Advice Longest Wait (2hr Call Back),SevernSide,frontier,300,Every 5 hours,IUC Advice Longest Wait (2hr Call Back) - SevernSide
+IUC Advice Longest Wait (6hr Call Back),SevernSide,frontier,300,Every 5 hours,IUC Advice Longest Wait (6hr Call Back) - SevernSide
+Clinical Escalation Level (BrisDoc),SevernSide,frontier,300,Every 5 hours,Clinical Escalation Level (BrisDoc) - SevernSide
+OPEL,SWAST,frontier,1440,Every day at 8h00,OPEL - SWAST
+Minors patient count,BRI,frontier,15,Every 15 minutes,Minors patient count - BRI
+DtA P1 Slots Booked,Sirona,uec_daily,1440,Every day at 11h00,DtA P1 Slots Booked - Sirona
+Delayed TOC Docs to all Pathways,Sirona,uec_daily,1440,Every day at 11h00,Delayed TOC Docs to all Pathways - Sirona
+DtA P3 Beds Occupied,Sirona,uec_daily,1440,Every day at 11h00,DtA P3 Beds Occupied - Sirona
+Mason Section 136 Beds Available (Capacity 4),AWP,frontier,30,Every 30 minutes,Mason Section 136 Beds Available (Capacity 4) - AWP
+Referrals Received Yesterday,NHS @ Home,frontier,1440,Every day at 7h00,Referrals Received Yesterday - NHS @ Home
+Capacity (Available Slots Today),NHS @ Home,frontier,1440,Every day at 7h00,Capacity (Available Slots Today) - NHS @ Home
+Majors patient count,WGH,frontier,15,Every 15 minutes,Majors patient count - WGH
+Minors patient count,WGH,frontier,15,Every 15 minutes,Minors patient count - WGH
+Calls Offered in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Calls Offered in Last 15 mins - SevernSide
+Calls Answered in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Calls Answered in Last 15 mins - SevernSide
+Calls Abandoned Before Threshold in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Calls Abandoned Before Threshold in Last 15 mins - SevernSide
+Calls Abandoned After Threshold in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Calls Abandoned After Threshold in Last 15 mins - SevernSide
+Average Speed to Answer in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Average Speed to Answer in Last 15 mins - SevernSide
+Average Handling Time in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Average Handling Time in Last 15 mins - SevernSide
+Answered in 60 seconds in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Answered in 60 seconds in Last 15 mins - SevernSide
+Longest Wait in Last 15 mins,SevernSide,frontier,15,Every 15 minutes,Longest Wait in Last 15 mins - SevernSide
+Calls Offered Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Calls Offered Since Midnight that Received - SevernSide
+Calls Answered Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Calls Answered Since Midnight that Received - SevernSide
+Calls Abandoned Before Threshold Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Calls Abandoned Before Threshold Since Midnight that Received - SevernSide
+Calls Abandoned After Threshold Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Calls Abandoned After Threshold Since Midnight that Received - SevernSide
+Average Speed to Answer Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Average Speed to Answer Since Midnight that Received - SevernSide
+Average Handling Time Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Average Handling Time Since Midnight that Received - SevernSide
+Answered in 60 seconds Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Answered in 60 seconds Since Midnight that Received - SevernSide
+Longest Wait Since Midnight that Received,SevernSide,frontier,15,Every 15 minutes,Longest Wait Since Midnight that Received - SevernSide
+Calls Abandoned After Threshold in Last 15 mins (%),SevernSide,frontier,15,Every 15 minutes,Calls Abandoned After Threshold in Last 15 mins (%) - SevernSide
+Answered in 60 seconds in Last 15 mins (%),SevernSide,frontier,15,Every 15 minutes,Answered in 60 seconds in Last 15 mins (%) - SevernSide
+Calls Abandoned After Threshold Since Midnight that Received (%),SevernSide,frontier,15,Every 15 minutes,Calls Abandoned After Threshold Since Midnight that Received (%) - SevernSide
+Answered in 60 seconds Since Midnight that Received (%),SevernSide,frontier,15,Every 15 minutes,Answered in 60 seconds Since Midnight that Received (%) - SevernSide
+Majors patient count,BRI,frontier,15,Every 15 minutes,Majors patient count - BRI
+(Severnside) CAS Referred to ED,SevernSide,uec_daily,1440,Every day at 11h00,(Severnside) CAS Referred to ED - SevernSide
+BRI P3 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,BRI P3 NCtR Beddays - Sirona
+NBT P1 NCtR Beddays,Sirona,frontier,1440,Every day at 23h00,NBT P1 NCtR Beddays - Sirona
+WGH P3 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,WGH P3 NCtR Beddays - Sirona
+BRI P2 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,BRI P2 NCtR Beddays - Sirona
+P1 Slots Booked Today,Sirona,frontier,1440,Every day at 23h00,P1 Slots Booked Today - Sirona
+P1 Slots Used Yesterday,Sirona,frontier,1440,Every day at 23h00,P1 Slots Used Yesterday - Sirona
+P1 (Available) Slots Not Utilised,Sirona,frontier,1440,Every day at 23h00,P1 (Available) Slots Not Utilised - Sirona
+P2 Beds Occupied,Sirona,frontier,1440,Every day at 23h00,P2 Beds Occupied - Sirona
+P2 (Available) Beds Not Utilised,Sirona,frontier,1440,Every day at 23h00,P2 (Available) Beds Not Utilised - Sirona
+P3 Beds Occupied,Sirona,frontier,1440,Every day at 23h00,P3 Beds Occupied - Sirona
+P3 (Available) Beds Not Utilised,Sirona,frontier,1440,Every day at 23h00,P3 (Available) Beds Not Utilised - Sirona
+P1 Acute Waiting List (Booked + Unbooked),Sirona,frontier,1440,Every day at 23h00,P1 Acute Waiting List (Booked + Unbooked) - Sirona
+P1 Referrals Yesterday,Sirona,frontier,1440,Every day at 23h00,P1 Referrals Yesterday - Sirona
+P1 NCtR,Sirona,frontier,1440,Every day at 23h00,P1 NCtR - Sirona
+P2 Acute Waiting List (Booked + Unbooked),Sirona,frontier,1440,Every day at 23h00,P2 Acute Waiting List (Booked + Unbooked) - Sirona
+P2 Patients Predicted for Admission Today,Sirona,frontier,1440,Every day at 23h00,P2 Patients Predicted for Admission Today - Sirona
+P3 Acute Waiting List (Booked + Unbooked),Sirona,frontier,1440,Every day at 23h00,P3 Acute Waiting List (Booked + Unbooked) - Sirona
+P3 Referrals Yesterday,Sirona,frontier,1440,Every day at 23h00,P3 Referrals Yesterday - Sirona
+NBT NCtR Beddays,Sirona,frontier,1440,Every day at 23h00,NBT NCtR Beddays - Sirona
+NBT NCtR Patients,Sirona,frontier,1440,Every day at 23h00,NBT NCtR Patients - Sirona
+NBT P2 NCtR Beddays,Sirona,frontier,1440,Every day at 23h00,NBT P2 NCtR Beddays - Sirona
+NBT P3 NCtR Beddays,Sirona,frontier,1440,Every day at 23h00,NBT P3 NCtR Beddays - Sirona
+NBT P1 NCtR Patients,Sirona,frontier,1440,Every day at 23h00,NBT P1 NCtR Patients - Sirona
+NBT P2 NCtR Patients,Sirona,frontier,1440,Every day at 23h00,NBT P2 NCtR Patients - Sirona
+NBT P3 NCtR Patients,Sirona,frontier,1440,Every day at 23h00,NBT P3 NCtR Patients - Sirona
+NBT NCtR >= 65 years old,Sirona,frontier,1440,Every day at 23h00,NBT NCtR >= 65 years old - Sirona
+P2 NCtR,Sirona,frontier,1440,Every day at 23h00,P2 NCtR - Sirona
+Unallocated Red Nursing Schedules,Sirona,frontier,1440,Every day at 23h00,Unallocated Red Nursing Schedules - Sirona
+Red Nursing schedules,Sirona,frontier,1440,Every day at 23h00,Red Nursing schedules - Sirona
+BRI NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,BRI NCtR Beddays - Sirona
+BRI NCtR Patients,Sirona,frontier,1440,Every day at 9h00,BRI NCtR Patients - Sirona
+BRI P1 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,BRI P1 NCtR Beddays - Sirona
+BRI P1 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,BRI P1 NCtR Patients - Sirona
+BRI P2 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,BRI P2 NCtR Patients - Sirona
+BRI P3 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,BRI P3 NCtR Patients - Sirona
+BRI NCtR >= 65 years old,Sirona,frontier,1440,Every day at 9h00,BRI NCtR >= 65 years old - Sirona
+WGH NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,WGH NCtR Beddays - Sirona
+WGH NCtR Patients,Sirona,frontier,1440,Every day at 9h00,WGH NCtR Patients - Sirona
+WGH P1 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,WGH P1 NCtR Beddays - Sirona
+WGH P2 NCtR Beddays,Sirona,frontier,1440,Every day at 9h00,WGH P2 NCtR Beddays - Sirona
+WGH P1 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,WGH P1 NCtR Patients - Sirona
+WGH P2 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,WGH P2 NCtR Patients - Sirona
+WGH P3 NCtR Patients,Sirona,frontier,1440,Every day at 9h00,WGH P3 NCtR Patients - Sirona
+WGH NCtR >= 65 years old,Sirona,frontier,1440,Every day at 9h00,WGH NCtR >= 65 years old - Sirona
+DOS Status at 10am,Sirona,frontier,1440,Every day at 23h00,DOS Status at 10am - Sirona
+P1 Caseload,Sirona,frontier,1440,Every day at 23h00,P1 Caseload - Sirona
+P2 Referrals Yesterday,Sirona,frontier,1440,Every day at 23h00,P2 Referrals Yesterday - Sirona
+P2 Admissions Yesterday,Sirona,frontier,1440,Every day at 23h00,P2 Admissions Yesterday - Sirona
+P3 Admissions Yesterday,Sirona,frontier,1440,Every day at 23h00,P3 Admissions Yesterday - Sirona
+Unallocated Red Nursing Schedules (%),Sirona,frontier,1440,Every day at 23h00,Unallocated Red Nursing Schedules (%) - Sirona
+Automated OPEL,BRI,frontier,15,Every 15 minutes,Automated OPEL - BRI
+2. ED all-type 4-hour performance,BRI,frontier,15,Every 15 minutes,2. ED all-type 4-hour performance - BRI
+4. Majors and resuscitation occupancy (adult),BRI,frontier,15,Every 15 minutes,4. Majors and resuscitation occupancy (adult) - BRI
+6. % of patients spending >12 hours in ED,BRI,frontier,15,Every 15 minutes,6. % of patients spending >12 hours in ED - BRI
+9. % of beds occupied by patients with NCtR,BRI,frontier,15,Every 15 minutes,9. % of beds occupied by patients with NCtR - BRI
+Aggregated NHSE OPEL Score,BRI,frontier,15,Every 15 minutes,Aggregated NHSE OPEL Score - BRI
+Automated OPEL,WGH,frontier,15,Every 15 minutes,Automated OPEL - WGH
+2. ED all-type 4-hour performance,WGH,frontier,15,Every 15 minutes,2. ED all-type 4-hour performance - WGH
+4. Majors and resuscitation occupancy (adult),WGH,frontier,15,Every 15 minutes,4. Majors and resuscitation occupancy (adult) - WGH
+6. % of patients spending >12 hours in ED,WGH,frontier,15,Every 15 minutes,6. % of patients spending >12 hours in ED - WGH
+9. % of beds occupied by patients with NCtR,WGH,frontier,15,Every 15 minutes,9. % of beds occupied by patients with NCtR - WGH
+Aggregated NHSE OPEL Score,WGH,frontier,15,Every 15 minutes,Aggregated NHSE OPEL Score - WGH
+WGH P0 Discharges,Sirona,frontier,15,Every 15 minutes,WGH P0 Discharges - Sirona
+WGH Complex Discharges,Sirona,frontier,15,Every 15 minutes,WGH Complex Discharges - Sirona
+BRI P0 Discharges,Sirona,frontier,15,Every 15 minutes,BRI P0 Discharges - Sirona
+BRI Complex Discharges,Sirona,frontier,15,Every 15 minutes,BRI Complex Discharges - Sirona
+Automated OPEL,NBT,frontier,1440,Every day at 7h00,Automated OPEL - NBT
+2. ED all-type 4-hour performance,NBT,frontier,1440,Every day at 7h00,2. ED all-type 4-hour performance - NBT
+4. Majors and resuscitation occupancy (adult),NBT,frontier,1440,Every day at 7h00,4. Majors and resuscitation occupancy (adult) - NBT
+5. Median time to treatment since midnight,NBT,frontier,1440,Every day at 7h00,5. Median time to treatment since midnight - NBT
+6. % of patients spending >12 hours in ED,NBT,frontier,1440,Every day at 7h00,6. % of patients spending >12 hours in ED - NBT
+9. % of beds occupied by patients with NCtR,NBT,frontier,1440,Every day at 7h00,9. % of beds occupied by patients with NCtR - NBT
+Aggregated NHSE OPEL Score,NBT,frontier,1440,Every day at 7h00,Aggregated NHSE OPEL Score - NBT
+NBT P0 Discharges,Sirona,frontier,1440,Every day at 7h00,NBT P0 Discharges - Sirona
+NBT Complex Discharges,Sirona,frontier,1440,Every day at 7h00,NBT Complex Discharges - Sirona
+3. ED all-type attendance variation,BRI,frontier,15,Every 15 minutes,3. ED all-type attendance variation - BRI
+5. Median time to treatment since midnight,BRI,frontier,15,Every 15 minutes,5. Median time to treatment since midnight - BRI
+8. % of open beds that are escalation beds,BRI,frontier,15,Every 15 minutes,8. % of open beds that are escalation beds - BRI
+3. ED all-type attendance variation,WGH,frontier,15,Every 15 minutes,3. ED all-type attendance variation - WGH
+5. Median time to treatment since midnight,WGH,frontier,15,Every 15 minutes,5. Median time to treatment since midnight - WGH
+8. % of open beds that are escalation beds,WGH,frontier,15,Every 15 minutes,8. % of open beds that are escalation beds - WGH
+Ambulance Queue,WGH,frontier,15,Every 15 minutes,Ambulance Queue - WGH
+Intensive Caseload,AWP,frontier,1440,Every day at 7h00,Intensive Caseload - AWP
+Bed Occupancy Adult,AWP,frontier,1440,Every day at 7h00,Bed Occupancy Adult - AWP
+Bed Occupancy PICU,AWP,frontier,1440,Every day at 7h00,Bed Occupancy PICU - AWP
+Urgent Referrals,AWP,frontier,1440,Every day at 7h00,Urgent Referrals - AWP
+OOT Internal Placements,AWP,frontier,1440,Every day at 7h00,OOT Internal Placements - AWP
