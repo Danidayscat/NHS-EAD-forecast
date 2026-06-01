@@ -32,7 +32,15 @@ if (!file.exists(csv_path)) {
   if (file.exists(zip_path)) {
     unzip(zip_path, exdir = data_dir)
   } else {
-    stop("Neither CSV nor ZIP development dataset was found in /data.")
+    stop(
+      paste0(
+        "Dataset not found in /data.\n",
+        "Please place either:\n",
+        "  - data/turingAI_forecasting_challenge_dataset.csv\n",
+        "  - data/turingAI_forecasting_challenge_dataset.csv.zip\n",
+        "before running the script."
+      )
+    )
   }
 }
 

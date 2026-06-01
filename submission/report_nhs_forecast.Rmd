@@ -107,6 +107,8 @@ mse_distribution <- tibble(
 
 This report summarises the final submitted forecasting pipeline for daily estimated avoidable deaths using NHS operational indicators. The workflow was designed to comply with the competition rules by using only information available up to the midday cutoff and by restricting target-derived predictors to lags of three days or more.
 
+**Reproducibility note**: The final report reads only precomputed outputs from `submission/`. To regenerate those outputs, first place the challenge dataset in `data/` as CSV or ZIP and then run `Rscript run_forecast_xgb.R`.
+
 ## Data Preparation
 
 Raw timestamped observations were converted to UTC and aggregated to daily level using the competition midday rule. Measurements available before 12:00 were assigned to the same calendar day, whereas later measurements were shifted to the following day.
