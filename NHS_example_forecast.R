@@ -4,7 +4,7 @@ library(e1071)
 library(imputeTS)
 library(zoo)
 
-setwd("/Users/alexrabeau/Desktop/SPHERE/NHS-AD-forecasting")
+setwd("~/Library/CloudStorage/OneDrive-UniversidadMayor/forecast/NHS-EAD-forecast")
 
 # ============================================================================
 # 1. LOAD DATA + PREPROCESSING
@@ -57,15 +57,61 @@ abbrev_df <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Remove missing values using Kalman imputation
+num_cols <- forecasting_df %>%
+  select(where(is.numeric)) %>%
+  names()
+
+num_cols <- setdiff(num_cols, c("estimated_avoidable_deaths", "midday_day"))
+
+# Función de imputación segura por columna
+impute_safe_ts <- function(x) {
+  n_total <- length(x)
+  n_na <- sum(is.na(x))
+  n_valid <- sum(is.finite(x))
+  
+  # Si no hay valores válidos o casi todos son NA: no imputar por TS
+  if (n_valid < 3 || n_na / n_total > 0.5) {
+    # Imputar por mediana si hay algunos valores válidos
+    if (n_valid > 0) {
+      med <- median(x, na.rm = TRUE)
+      if (is.na(med)) med <- mean(x, na.rm = TRUE)
+      x[is.na(x)] <- med
+    }
+    return(x)
+  }
+  
+  # Si varianza cero, no tiene sentido imputar por serie temporal
+  if (sd(x, na.rm = TRUE) == 0) {
+    return(x)
+  }
+  
+  # Intentar imputación Kalman, si falla caer a interpolación lineal
+  out <- tryCatch(
+    imputeTS::na_kalman(x),
+    error = function(e) {
+      tryCatch(
+        imputeTS::na_interpolation(x, option = "linear"),
+        error = function(e2) {
+          # Último resort: mediana
+          med <- median(x, na.rm = TRUE)
+          if (is.na(med)) med <- mean(x, na.rm = TRUE)
+          if (is.na(med)) return(x)
+          x[is.na(x)] <- med
+          x
+        }
+      )
+    }
+  )
+  
+  out
+}
+
+# Aplicar imputación segura solo a columnas seleccionadas
 forecasting_df <- forecasting_df %>%
-  mutate(across(
-    where(is.numeric) & !all_of(c("estimated_avoidable_deaths", "midday_day")),
-    ~ na_kalman(.)
-  ))
+  mutate(across(all_of(num_cols), impute_safe_ts))
 
+# Después, eliminar filas con algunos NA restantes si es necesario
 forecasting_df <- na.omit(forecasting_df)
-
 
 # ============================================================================
 # 2. FEATURE ENGINEERING
@@ -258,4 +304,3 @@ for (i in 1:n_forecasts) {
 }
 
 write.csv(mse_df, "mse_summary.csv", row.names = FALSE)
-

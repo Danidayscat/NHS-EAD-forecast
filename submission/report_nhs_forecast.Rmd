@@ -1,0 +1,178 @@
+---
+title: "NHS Severe Patient Harm Forecasting"
+output:
+  pdf_document:
+    latex_engine: xelatex
+author: "Daniela Díaz Catalán Ph.D. and Patricio Alarcón Morales"
+date: '`r format(Sys.Date(), "%e %B %Y")`'
+geometry: margin=1in
+fontsize: 9pt
+linestretch: 1.15
+mainfont: "Arial"
+sansfont: "Arial"
+monofont: "Menlo"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  cache = FALSE,
+  fig.align = "center",
+  fig.width = 8,
+  fig.height = 4.5
+)
+
+options(knitr.kable.NA = "")
+Sys.setlocale("LC_TIME", "C")
+
+library(readr)
+library(dplyr)
+library(knitr)
+library(here)
+```
+
+```{r read-results, include=FALSE}
+required_files <- c(
+  "data_summary.csv",
+  "transformation_summary.csv",
+  "results_summary.csv",
+  "runtime_summary.csv",
+  "mse_summary.csv",
+  "validation_summary.csv",
+  "pred_matrix.csv"
+)
+
+missing_files <- required_files[!file.exists(here("submission", required_files))]
+if (length(missing_files) > 0) {
+  stop(
+    paste(
+      "Missing required files:",
+      paste(missing_files, collapse = ", "),
+      "\nRun `Rscript run_forecast_xgb.R` before knitting this report."
+    )
+  )
+}
+
+data_summary <- read_csv(here("submission", "data_summary.csv"), show_col_types = FALSE)
+transformation_summary <- read_csv(here("submission", "transformation_summary.csv"), show_col_types = FALSE)
+results_summary <- read_csv(here("submission", "results_summary.csv"), show_col_types = FALSE)
+runtime_summary <- read_csv(here("submission", "runtime_summary.csv"), show_col_types = FALSE)
+mse_summary <- read_csv(here("submission", "mse_summary.csv"), show_col_types = FALSE)
+validation_summary <- read_csv(here("submission", "validation_summary.csv"), show_col_types = FALSE)
+
+data_summary_display <- data_summary %>%
+  mutate(
+    start_date = as.character(start_date),
+    end_date = as.character(end_date)
+  )
+
+transformation_summary_display <- transformation_summary %>%
+  mutate(
+    transformation = recode(
+      transformation,
+      none = "None",
+      log1p = "Log(1+x)",
+      sqrt = "Square root",
+      squared = "Squared"
+    )
+  )
+
+results_summary_display <- results_summary %>%
+  mutate(across(where(is.numeric), ~ round(.x, 4)))
+
+runtime_summary_display <- runtime_summary %>%
+  transmute(
+    `Training window` = train_window_days,
+    `Horizon` = horizon_days,
+    `Windows` = n_forecasts,
+    `Total runtime (min)` = round(total_runtime_min, 2),
+    `Mean runtime (sec)` = round(mean_runtime_sec, 2),
+    `Median runtime (sec)` = round(median_runtime_sec, 2),
+    `Mean best iteration` = round(mean_best_iteration, 1),
+    `Median best iteration` = round(median_best_iteration, 1),
+    `Mean features used` = round(mean_features_used, 1)
+  )
+
+mse_distribution <- tibble(
+  Horizon = c("1-5 days", "6-10 days"),
+  `Mean MSE` = c(mean(mse_summary$mse_1_5), mean(mse_summary$mse_6_10)),
+  `Median MSE` = c(median(mse_summary$mse_1_5), median(mse_summary$mse_6_10))
+) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 4)))
+```
+
+## Introduction
+
+This report summarises the final submitted forecasting pipeline for daily estimated avoidable deaths using NHS operational indicators. The workflow was designed to comply with the competition rules by using only information available up to the midday cutoff and by restricting target-derived predictors to lags of three days or more.
+
+## Data Preparation
+
+Raw timestamped observations were converted to UTC and aggregated to daily level using the competition midday rule. Measurements available before 12:00 were assigned to the same calendar day, whereas later measurements were shifted to the following day.
+
+The long-format input was then reshaped to one row per day with the target and all candidate predictors in wide format. Predictor names were abbreviated and cleaned to support reproducible feature engineering and model fitting.
+
+```{r data-summary-table}
+knitr::kable(
+  data_summary_display,
+  caption = "Prepared modelling dataset",
+  booktabs = TRUE
+)
+```
+
+## Feature Engineering
+
+Missing values were handled using a rule-based strategy combining Kalman smoothing, linear interpolation, and median fallback when sparse or unstable series prevented more structured time-series imputation. Predictors included calendar variables, rolling summaries of operational indicators, and safe outcome lags compatible with the reporting delay.
+
+Highly skewed predictors were transformed before modelling to improve numerical stability. The table below summarises the number of predictors affected by each transformation type.
+
+```{r transformation-summary-table}
+knitr::kable(
+  transformation_summary_display,
+  caption = "Number of predictors by transformation type",
+  booktabs = TRUE
+)
+```
+
+## Model and Validation
+
+Several candidate models were explored during development, and XGBoost provided the most consistent retrospective performance across both competition horizons. The final implementation used rolling-origin validation with a 180-day training window and a 10-day forecast horizon, with a time-ordered internal validation split for early stopping inside each training window.
+
+These retrospective windows were used only for internal model development and do not correspond to the official competition assessment periods. The submitted code remains fixed, while recalibration is achieved solely by updating the rolling training data available at each forecast origin.
+
+## Results
+
+Forecast accuracy was summarised separately for days 1-5 and days 6-10 to match the competition scoring framework. The final XGBoost model achieved the following retrospective mean squared error values on the development period.
+
+```{r results-summary-table}
+knitr::kable(
+  results_summary_display,
+  caption = "Overall retrospective cross-validation MSE by horizon",
+  booktabs = TRUE
+)
+```
+
+The next table summarises runtime on the study machine for the retrospective rolling-origin validation workflow.
+
+```{r runtime-summary-table}
+knitr::kable(
+  runtime_summary_display,
+  caption = "Runtime summary for rolling-origin validation",
+  booktabs = TRUE
+)
+```
+
+Window-level error summaries are shown below for completeness.
+
+```{r mse-distribution-table}
+knitr::kable(
+  mse_distribution,
+  caption = "Window-level MSE distribution",
+  booktabs = TRUE
+)
+```
+
+## Submission Output
+
+The final workflow exports a 10-day forecast matrix in submission format together with a window-level MSE summary for internal quality control. This report reads precomputed outputs only, which keeps the final knit lightweight and fully reproducible.
