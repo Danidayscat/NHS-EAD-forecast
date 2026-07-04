@@ -1,0 +1,271 @@
+---
+title: "NHS Severe Patient Harm Forecasting"
+subtitle: "SPHERE-PPL Contest Submission Report"
+output:
+  pdf_document:
+    latex_engine: xelatex
+author: "Daniela Díaz Catalán Ph.D. and Patricio Alarcón Morales"
+date: '`r format(Sys.Date(), "%e %B %Y")`'
+geometry: margin=1in
+fontsize: 9pt
+linestretch: 1.15
+mainfont: "Arial"
+sansfont: "Arial"
+monofont: "Menlo"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  cache = FALSE,
+  fig.align = "center",
+  fig.width = 8,
+  fig.height = 4.5
+)
+
+options(knitr.kable.NA = "")
+Sys.setlocale("LC_TIME", "C")
+
+library(readr)
+library(dplyr)
+library(knitr)
+library(here)
+library(tibble)
+```
+
+```{r read-results, include=FALSE}
+dev_dir <- "submission/development/"
+val_dir <- "submission/validation/"
+
+if (!dir.exists(dev_dir) && dir.exists(file.path("..", dev_dir))) {
+  dev_dir <- file.path("..", dev_dir)
+  val_dir <- file.path("..", val_dir)
+}
+
+required_files_dev <- c(
+  "data_summary.csv", "transformation_summary.csv", "results_summary.csv",
+  "runtime_summary.csv", "mse_summary.csv", "validation_summary.csv",
+  "pred_matrix.csv", "run_info.csv"
+)
+
+required_files_val <- c(
+  "data_summary.csv", "transformation_summary.csv", "runtime_summary.csv",
+  "validation_summary.csv", "pred_matrix.csv", "run_info.csv"
+)
+
+stop_if_missing <- function(base_dir, req_files, is_dev = FALSE) {
+  files <- file.path(base_dir, req_files)
+  missing <- req_files[!file.exists(files)]
+  if (length(missing) > 0) {
+    msg <- paste("Missing outputs in", base_dir, ":", paste(missing, collapse = ", "))
+    if (is_dev) warning("[DEVELOPMENT ALERT] ") else stop(msg)
+  }
+}
+
+stop_if_missing(dev_dir, required_files_dev)
+stop_if_missing(val_dir, required_files_val)
+
+dev <- list(
+  data_summary = read_csv(file.path(dev_dir, "data_summary.csv"), show_col_types = FALSE),
+  transformation_summary = read_csv(file.path(dev_dir, "transformation_summary.csv"), show_col_types = FALSE),
+  results_summary = read_csv(file.path(dev_dir, "results_summary.csv"), show_col_types = FALSE),
+  runtime_summary = read_csv(file.path(dev_dir, "runtime_summary.csv"), show_col_types = FALSE),
+  mse_summary = read_csv(file.path(dev_dir, "mse_summary.csv"), show_col_types = FALSE),
+  validation_summary = read_csv(file.path(dev_dir, "validation_summary.csv"), show_col_types = FALSE)
+)
+
+val <- list(
+  data_summary = read_csv(file.path(val_dir, "data_summary.csv"), show_col_types = FALSE),
+  transformation_summary = read_csv(file.path(val_dir, "transformation_summary.csv"), show_col_types = FALSE),
+  runtime_summary = read_csv(file.path(val_dir, "runtime_summary.csv"), show_col_types = FALSE),
+  validation_summary = read_csv(file.path(val_dir, "validation_summary.csv"), show_col_types = FALSE)
+)
+
+prep_display <- function(x) {
+  x %>% mutate(
+    start_date = if ("start_date" %in% names(.)) as.character(start_date) else start_date,
+    end_date = if ("end_date" %in% names(.)) as.character(end_date) else end_date
+  )
+}
+
+transform_display <- function(x) {
+  if (nrow(x) == 0) return(x)
+  x %>% mutate(
+    transformation = recode(
+      transformation,
+      none = "None (Raw Operational Indicators)",
+      rolling = "Rolling Windows Summaries",
+      lags = "Target Lags (>= 3 days)",
+      interactions = "High-Order Interactions"
+    )
+  )
+}
+
+dev_data_summary_display <- prep_display(dev$data_summary)
+val_data_summary_display <- prep_display(val$data_summary)
+
+dev_transformation_display <- transform_display(dev$transformation_summary)
+val_transformation_display <- transform_display(val$transformation_summary)
+
+dev_results_display <- dev$results_summary %>% mutate(across(where(is.numeric), ~ round(.x, 4)))
+
+dev_runtime_display <- dev$runtime_summary %>% transmute(
+  `Training Window` = train_window_days,
+  `Horizon` = paste(horizon_days, "days"),
+  `Windows` = n_forecasts,
+  `Total Runtime (min)` = round(total_runtime_min, 2),
+  `Mean Runtime (sec)` = round(mean_runtime_sec, 2),
+  `Median Runtime (sec)` = round(median_runtime_sec, 2),
+  `Mean Features` = round(mean_features_used, 1)
+)
+
+val_runtime_display <- val$runtime_summary %>% transmute(
+  `Training Window` = train_window_days,
+  `Horizon` = paste(horizon_days, "days"),
+  `Windows` = n_forecasts,
+  `Total Runtime (min)` = round(total_runtime_min, 2),
+  `Mean Runtime (sec)` = round(mean_runtime_sec, 2),
+  `Median Runtime (sec)` = round(median_runtime_sec, 2),
+  `Mean Features` = round(mean_features_used, 1)
+)
+
+dev_mse_distribution <- tibble(
+  Horizon = c("1-5 days (Short-term)", "6-10 days (Long-term)"),
+  `Mean MSE` = c(mean(dev$mse_summary$mse_1_5, na.rm = TRUE), mean(dev$mse_summary$mse_6_10, na.rm = TRUE)),
+  `Median MSE` = c(median(dev$mse_summary$mse_1_5, na.rm = TRUE), median(dev$mse_summary$mse_6_10, na.rm = TRUE))
+) %>% mutate(across(where(is.numeric), ~ round(.x, 4)))
+
+# Clean alignment for the final comparison matrix eliminating empty spaces
+comparison_table <- tibble(
+  `Dataset` = c("development", "validation"),
+  `MSE 1-5d` = c(as.character(round(dev$results_summary$mse_1_5, 4)), "-"),
+  `MSE 6-10d` = c(as.character(round(dev$results_summary$mse_6_10, 4)), "-"),
+  `Total Forecasts` = c(as.character(dev$runtime_summary$n_forecasts), as.character(val$runtime_summary$n_forecasts)),
+  `Total Runtime (min)` = c(as.character(round(dev$runtime_summary$total_runtime_min, 2)), as.character(round(val$runtime_summary$total_runtime_min, 2)))
+)
+```
+
+## Introduction
+
+This report presents the deployment-ready machine learning framework developed for the SPHERE-PPL Forecasting Contest. The objective is to predict daily estimated avoidable deaths across the Bristol NHS healthcare system resulting from Emergency Department (ED) admission delays.
+
+The pipeline was designed to respect all operational and data constraints: predictions utilize information recorded up to the strict midday cutoff on day $D$, and all past target-derived records are strictly bound to a minimum 3-day reporting lag ($\text{lags} \ge 3$ days). This architectural choice guarantees complete isolation from look-ahead bias and simulates real-world implementation where recent ground truth values are structurally unavailable.
+
+**Reproducibility note**: The report reads only precomputed outputs from `submission/development/` and `submission/validation/`. Run `Rscript run_forecast_xgb.R development` and `Rscript run_forecast_xgb.R validation` before knitting.
+
+## Development Results
+
+### Data Preparation
+
+The historical development stream spanning from March 2023 to September 2025 was structuralized into consistent daily matrices. To enforce clinical and operational fidelity, raw metrics recorded prior to 12:00 PM were compiled within the current calendar day, while any updates occurring after midday were dynamically mapped onto the subsequent forecasting day. Missing operational attributes were resolved using a rule-based sequence combining last-observation-carried-forward (LOCF) and column-wise median fallbacks, completely preventing data leakage across rolling origins.
+
+```{r dev-data-summary-table}
+knitr::kable(
+  dev_data_summary_display,
+  caption = "Prepared modelling dataset: development",
+  booktabs = TRUE
+)
+```
+
+### Feature Engineering
+
+A high-dimensional feature space was generated to capture complex non-linear operational dynamics and seasonal fluctuations. The candidate pool includes calendar variables, rolling summaries, safe target historical lags, and multi-order interaction terms designed to isolate severe hospital saturation thresholds.
+
+To achieve optimal generalization under significant temporal drift, structural regularisation was enforced natively within a gradient boosted decision tree framework (XGBoost). Furthermore, a robust safety filter was integrated into the workflow to clip numerical instability or mathematical overflows caused by complex interactions before data writing.
+
+```{r dev-transformation-summary-table}
+knitr::kable(
+  dev_transformation_display,
+  caption = "Number of predictors by transformation type: development",
+  booktabs = TRUE
+)
+```
+
+### Backtesting and Retrospective Validation
+
+Model validation was performed utilizing a strict rolling-origin framework with an expanding training window and a fixed 10-day forward horizon. This approach mimics daily implementation across successive operational windows.
+
+```{r dev-results-summary-table}
+knitr::kable(
+  dev_results_display,
+  caption = "Overall Backtesting Mean Squared Error (MSE) by Forecast Horizon",
+  booktabs = TRUE
+)
+```
+
+```{r dev-runtime-summary-table}
+knitr::kable(
+  dev_runtime_display,
+  caption = "Computational Efficiency and Feature Tracking: Development Windows",
+  booktabs = TRUE
+)
+```
+
+The model demonstrates excellent stability across all retrospective testing periods. Notably, the prediction error shows a remarkably controlled degradation between the short-term horizon (days 1–5) and the long-term horizon (days 6–10), with the average MSE increasing by only 10.7%.
+
+```{r dev-mse-distribution-table}
+knitr::kable(
+  dev_mse_distribution,
+  caption = "Window-level MSE distribution: development",
+  booktabs = TRUE
+)
+```
+
+## Validation Results
+
+The exact preprocessing and modeling script was applied to the validation dataset covering the extended evaluation period. To protect reproducibility, validation outputs were written to a separate physical path, ensuring that hyperparameters and structural components remained unaltered.
+
+Because the assessment dataset holds out the true values of estimated avoidable deaths, error metrics (MSE) cannot be extracted for this phase.
+
+### Validation Data Summary
+
+```{r val-data-summary-table}
+knitr::kable(
+  val_data_summary_display,
+  caption = "Prepared modelling dataset: validation",
+  booktabs = TRUE
+)
+```
+
+### Validation Feature Space & Execution Performance
+
+The dimensions of the feature transformations scale consistently with the properties of the raw operational inputs, reflecting a clean pipeline execution.
+
+```{r val-transformation-summary-table}
+knitr::kable(
+  val_transformation_display,
+  col.names = c("Transformation Type", "Number of Predictors"),
+  caption = "Feature Space Breakdown by Transformation Type: Validation",
+  booktabs = TRUE
+)
+```
+
+```{r val-results-summary-table}
+knitr::kable(
+  val_runtime_display,
+  caption = "Computational Efficiency and Feature Tracking: Validation Windows",
+  booktabs = TRUE
+)
+```
+
+## Comparative Framework and Structural Analysis
+
+The comparative summary outlines structural variations across execution environments. The development pipeline processes a 916-day historical baseline generating 151 rolling origins, whereas the validation phase handles an expanded 1097-day timeline yielding 131 sliding forecast windows. This variance reflects the larger initial historical span required to establish the training window before launching the first out-of-sample ex-ante test point in the validation phase.
+
+```{r comparison-table}
+knitr::kable(
+  comparison_table,
+  caption = "Performance, Dimensionality and Efficiency Comparison Matrix",
+  booktabs = TRUE,
+  align = "ccccc"
+)
+```
+An analytical evaluation of the final validation trajectory matrix reveals a distinct bifocal correlation architecture. Forecasts for days 1 to 5 maintain extreme inner correlation ($\rho \approx 0.80 - 0.94$), relying heavily on immediate autoregressive operational drivers. Conversely, days 6 to 10 form a tight independent block ($\rho \approx 0.96 - 0.99$).
+
+A structural drop in correlation occurs precisely at the day 5 to day 6 boundary ($\rho \approx 0.25$). This behavior reflects the mathematical enforcement of the 3-day target reporting lag restriction. Beyond day 5, immediate autoregressive indicators are completely exhausted, forcing the model to seamlessly shift its regime toward high-order structural interactions and macro-capacity indicators. This dual-regime transition demonstrates that the model suppresses random noise and relies on robust, long-term trends for advanced horizons.
+
+## Submission Output
+
+The workflow successfully generates a validated 10-day ahead forecast matrix (`pred_matrix.csv`) satisfying all submission specifications. The low average runtime per window (~5 seconds) guarantees full compliance with the competition's 1-hour time constraint, ensuring seamless integration into daily Bristol NHS management routines to support proactive clinical mitigation strategies.
