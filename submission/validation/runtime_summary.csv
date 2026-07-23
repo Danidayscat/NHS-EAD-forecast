@@ -1,2 +1,2 @@
 "dataset","train_window_days","horizon_days","n_forecasts","total_runtime_min","mean_runtime_sec","median_runtime_sec","mean_features_used"
-"validation","Dynamic Hybrid (Tuned History)",10,131,10.75663189888,4.92670163307481,4.92837405204773,352
+"validation","Dynamic Hybrid (Tuned History)",10,131,13.8366558591525,6.33739963014617,6.34598708152771,352
