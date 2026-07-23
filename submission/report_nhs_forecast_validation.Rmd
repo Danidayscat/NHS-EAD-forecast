@@ -149,17 +149,17 @@ comparison_table <- tibble(
 
 ## Introduction
 
-This report presents the deployment-ready machine learning framework developed for the SPHERE-PPL Forecasting Contest. The objective is to predict daily estimated avoidable deaths across the Bristol NHS healthcare system resulting from Emergency Department (ED) admission delays.
+This report describes an XGBoost-based forecasting pipeline developed for the SPHERE-PPL Forecasting Contest. The objective is to forecast daily estimated avoidable deaths associated with Emergency Department admission delays across the Bristol NHS system.
 
-The pipeline was designed to respect all operational and data constraints: predictions utilize information recorded up to the strict midday cutoff on day $D$, and all past target-derived records are strictly bound to a minimum 3-day reporting lag ($\text{lags} \ge 3$ days). This architectural choice guarantees complete isolation from look-ahead bias and simulates real-world implementation where recent ground truth values are structurally unavailable.
-
-**Reproducibility note**: The report reads only precomputed outputs from `submission/development/` and `submission/validation/`. Run `Rscript run_forecast_xgb.R development` and `Rscript run_forecast_xgb.R validation` before knitting.
+Predictions use operational information available up to the midday cutoff on day \(D\). Target-derived features are restricted to values reported at least three days earlier, thereby respecting the reporting-lag constraint and avoiding use of recently unavailable outcome information. The workflow is reproducible from the precomputed outputs in `submission/development/` and `submission/validation/`.
 
 ## Development Results
 
-### Data Preparation
+### Data Preparation and Features
 
-The historical development stream spanning from March 2023 to September 2025 was structuralized into consistent daily matrices. To enforce clinical and operational fidelity, raw metrics recorded prior to 12:00 PM were compiled within the current calendar day, while any updates occurring after midday were dynamically mapped onto the subsequent forecasting day. Missing operational attributes were resolved using a rule-based sequence combining last-observation-carried-forward (LOCF) and column-wise median fallbacks, completely preventing data leakage across rolling origins.
+The development dataset was converted to a daily modelling matrix. Observations recorded by midday were assigned to the current day, whereas later observations were assigned to the following forecast day. Predictor missingness was handled using time-series imputation and fallback rules; the target was retained separately for model fitting and retrospective evaluation.
+
+The feature set included operational indicators, calendar variables, seven-day rolling means, target lags of at least three days, and selected interaction terms. Hierarchical correlation-based screening reduced redundant operational predictors before model fitting.
 
 ```{r dev-data-summary-table}
 knitr::kable(
@@ -169,41 +169,27 @@ knitr::kable(
 )
 ```
 
-### Feature Engineering
-
-A high-dimensional feature space was generated to capture complex non-linear operational dynamics and seasonal fluctuations. The candidate pool includes calendar variables, rolling summaries, safe target historical lags, and multi-order interaction terms designed to isolate severe hospital saturation thresholds.
-
-To achieve optimal generalization under significant temporal drift, structural regularisation was enforced natively within a gradient boosted decision tree framework (XGBoost). Furthermore, a robust safety filter was integrated into the workflow to clip numerical instability or mathematical overflows caused by complex interactions before data writing.
-
 ```{r dev-transformation-summary-table}
 knitr::kable(
   dev_transformation_display,
-  caption = "Number of predictors by transformation type: development",
+  caption = "Predictors by transformation type: development",
   booktabs = TRUE
 )
 ```
 
-### Backtesting and Retrospective Validation
+### Rolling-Origin Evaluation
 
-Model validation was performed utilizing a strict rolling-origin framework with an expanding training window and a fixed 10-day forward horizon. This approach mimics daily implementation across successive operational windows.
+Development performance was evaluated with rolling forecast origins and a 10-day prediction horizon. Separate XGBoost configurations were used for days 1--5 and days 6--10, while maintaining the target-lag restriction in every test window.
+
+The development MSE was 0.0158 for days 1--5 and 0.0175 for days 6--10. Runtime was approximately 14.17 minutes for 151 forecast windows.
 
 ```{r dev-results-summary-table}
 knitr::kable(
   dev_results_display,
-  caption = "Overall Backtesting Mean Squared Error (MSE) by Forecast Horizon",
+  caption = "Development MSE by forecast horizon",
   booktabs = TRUE
 )
 ```
-
-```{r dev-runtime-summary-table}
-knitr::kable(
-  dev_runtime_display,
-  caption = "Computational Efficiency and Feature Tracking: Development Windows",
-  booktabs = TRUE
-)
-```
-
-The model demonstrates excellent stability across all retrospective testing periods. Notably, the prediction error shows a remarkably controlled degradation between the short-term horizon (days 1–5) and the long-term horizon (days 6–10), with the average MSE increasing by only 10.7%.
 
 ```{r dev-mse-distribution-table}
 knitr::kable(
@@ -215,57 +201,58 @@ knitr::kable(
 
 ## Validation Results
 
-The exact preprocessing and modeling script was applied to the validation dataset covering the extended evaluation period. To protect reproducibility, validation outputs were written to a separate physical path, ensuring that hyperparameters and structural components remained unaltered.
+The final pipeline was rerun on the amended validation dataset. Observed estimated avoidable deaths were available from 1 October 2025 to 17 February 2026, enabling retrospective error calculation.
 
-Because the assessment dataset holds out the true values of estimated avoidable deaths, error metrics (MSE) cannot be extracted for this phase.
-
-### Validation Data Summary
+The validation evaluation included 131 rolling origins, from 30 September 2025 to 7 February 2026. Each origin generated a 10-day forecast, yielding 1,310 forecast--outcome pairs; all were available and finite.
 
 ```{r val-data-summary-table}
 knitr::kable(
   val_data_summary_display,
-  caption = "Prepared modelling dataset: validation",
+  caption = "Prepared modelling dataset: amended validation",
   booktabs = TRUE
 )
 ```
-
-### Validation Feature Space & Execution Performance
-
-The dimensions of the feature transformations scale consistently with the properties of the raw operational inputs, reflecting a clean pipeline execution.
 
 ```{r val-transformation-summary-table}
 knitr::kable(
   val_transformation_display,
   col.names = c("Transformation Type", "Number of Predictors"),
-  caption = "Feature Space Breakdown by Transformation Type: Validation",
+  caption = "Predictors by transformation type: amended validation",
   booktabs = TRUE
 )
 ```
+
+The mean validation MSE was 0.1258 for days 1--5, 0.1812 for days 6--10, and 0.1324 for the requested days 1--6 metric. The corresponding median MSE values were 0.0961, 0.1010, and 0.0961. The larger mean than median indicates that a small number of forecast windows had comparatively higher errors.
 
 ```{r val-results-summary-table}
 knitr::kable(
-  val_runtime_display,
-  caption = "Computational Efficiency and Feature Tracking: Validation Windows",
+  val_results_display,
+  caption = "Validation MSE by forecast horizon",
   booktabs = TRUE
 )
 ```
 
-## Comparative Framework and Structural Analysis
+```{r val-mse-distribution-table}
+knitr::kable(
+  val_mse_distribution,
+  caption = "Window-level MSE distribution: amended validation",
+  booktabs = TRUE
+)
+```
 
-The comparative summary outlines structural variations across execution environments. The development pipeline processes a 916-day historical baseline generating 151 rolling origins, whereas the validation phase handles an expanded 1097-day timeline yielding 131 sliding forecast windows. This variance reflects the larger initial historical span required to establish the training window before launching the first out-of-sample ex-ante test point in the validation phase.
+## Computational Performance
+
+The development and amended validation executions used the same modelling framework and fixed hyperparameters. Development comprised 151 forecast windows and validation comprised 131. The validation run required 13.84 minutes in total, which is within the one-hour computational constraint.
 
 ```{r comparison-table}
 knitr::kable(
   comparison_table,
-  caption = "Performance, Dimensionality and Efficiency Comparison Matrix",
+  caption = "Performance and computational summary",
   booktabs = TRUE,
   align = "ccccc"
 )
 ```
-An analytical evaluation of the final validation trajectory matrix reveals a distinct bifocal correlation architecture. Forecasts for days 1 to 5 maintain extreme inner correlation ($\rho \approx 0.80 - 0.94$), relying heavily on immediate autoregressive operational drivers. Conversely, days 6 to 10 form a tight independent block ($\rho \approx 0.96 - 0.99$).
-
-A structural drop in correlation occurs precisely at the day 5 to day 6 boundary ($\rho \approx 0.25$). This behavior reflects the mathematical enforcement of the 3-day target reporting lag restriction. Beyond day 5, immediate autoregressive indicators are completely exhausted, forcing the model to seamlessly shift its regime toward high-order structural interactions and macro-capacity indicators. This dual-regime transition demonstrates that the model suppresses random noise and relies on robust, long-term trends for advanced horizons.
 
 ## Submission Output
 
-The workflow successfully generates a validated 10-day ahead forecast matrix (`pred_matrix.csv`) satisfying all submission specifications. The low average runtime per window (~5 seconds) guarantees full compliance with the competition's 1-hour time constraint, ensuring seamless integration into daily Bristol NHS management routines to support proactive clinical mitigation strategies.
+The submission includes `pred_matrix.csv`, containing the 10-day forecasts, and `mse_summary.csv`, containing one row for each of the 131 amended-validation forecast windows. The latter reports `forecast_id`, the forecast dates, `mse_1_5`, `mse_6_10`, and the requested `mse_1_6` metric.
